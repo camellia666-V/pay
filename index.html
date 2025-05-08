@@ -39,7 +39,7 @@
       <li>视听特权：可享受高清画质、杜比音效等优质视听体验。</li>
       <li>下载特权：可以离线下载部分影视剧，随时随地观看。</li>
     </ol>
-    <input type="text" placeholder="请输入用户手机号" class="w-full p-2 border border-gray-300 rounded mb-6">
+    <input  id='num' type="text" placeholder="请输入用户手机号" class="w-full p-2 border border-gray-300 rounded mb-6">
     <div class="button-container flex justify-between">
       <button id="1" class="bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded hover:bg-gray-300">取消</button>
       <button id="2" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600">确定</button>
@@ -54,6 +54,20 @@
         window.location.href = "./cancel.html";
       }
     }
+    let prevLength = 0;
+        document.getElementById('num').oninput = function () {
+            // 获取当前输入框的值并赋值给变量 input
+            let input = this.value;
+            if (input.length === 11) {
+                document.getElementById('2').disabled = false;
+            } else {
+                if (prevLength === 11) {
+                    alert('请输入正确的手机号！');
+                }
+                document.getElementById('2').disabled = true;
+            }
+            prevLength = input.length;
+        };
   </script>
 </body>
 </html>
